@@ -2,7 +2,24 @@
 export default {
 	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
 	theme: {
-		extend: {},
+		container: {
+			center: true,
+			padding: "2rem",
+			screens: {
+				"2xl": "1400px",
+			},
+		},
+		extend: {
+			// see /App.css for reference
+			colors: {
+				background: "hsl(var(--background))",
+				foreground: "hsl(var(--foreground))",
+				primary: "hsl(var(--primary))",
+				secondary: "hsl(var(--secondary))",
+				accent: "hsl(var(--accent))",
+				primaryButton: "hsl(var(--primary-button-color))",
+			},
+		},
 	},
 	plugins: [],
 };

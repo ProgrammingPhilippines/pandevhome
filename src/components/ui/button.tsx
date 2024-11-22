@@ -7,8 +7,7 @@ const buttonVariants = cva(
 	{
 		variants: {
 			variant: {
-				default:
-					"bg-neutral-100 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100 hover:bg-neutral-100/90 dark:hover:bg-neutral-900/90",
+				default: "text-white bg-button hover:outline hover:outline-dashed hover:outline-accent hover:outline-offset-2",
 				// add button variants in here as per Figma design
 			},
 			// not the actual sizes yet, feel free to modify these
