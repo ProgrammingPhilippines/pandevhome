@@ -1,9 +1,11 @@
-import logo from "./assets/logo.svg";
+import logo from "./assets/logo.png";
 
 function App() {
 	return (
-		<div className="w-full h-screen bg-black text-white flex items-center justify-center">
-			<img src={logo} alt="logo" />
+		<div className="bg-background text-foreground">
+			<div className="container min-h-screen flex items-center justify-center">
+				<img src={logo} alt="logo" />
+			</div>
 		</div>
 	);
 }
