@@ -7,7 +7,7 @@ const buttonVariants = cva(
 	{
 		variants: {
 			variant: {
-				default: "text-white bg-button hover:outline hover:outline-dashed hover:outline-accent hover:outline-offset-2",
+				default: "text-white bg-button hover:outline-dashed hover:outline-accent hover:outline-offset-2",
 				// add button variants in here as per Figma design
 			},
 			// not the actual sizes yet, feel free to modify these
@@ -25,9 +25,11 @@ const buttonVariants = cva(
 	},
 );
 
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & VariantProps<typeof buttonVariants>;
+type ButtonBaseComponent = HTMLElementTagNameMap['button'];
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+type ButtonProps = React.ButtonHTMLAttributes<ButtonBaseComponent> & VariantProps<typeof buttonVariants>;
+
+export const Button = React.forwardRef<ButtonBaseComponent, ButtonProps>(
 	({ className, variant, size, ...props }, ref) => {
 		return <button className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />;
 	},
