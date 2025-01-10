@@ -26,3 +26,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# If you're using pnpm, we can remove this
+# but it seems everyone is using npm by default...
+pnpm-lock.yaml
