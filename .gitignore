@@ -1,6 +1,7 @@
 # Environment
 .env
 .env.*
+!.env.example
 
 # Logs
 logs
@@ -30,6 +31,30 @@ dist-ssr
 # Test coverage
 coverage/
 
-# If you're using pnpm, we can remove this
-# but it seems everyone is using npm by default...
-pnpm-lock.yaml
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+*.pem
+
+# local env files
+.env*.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts

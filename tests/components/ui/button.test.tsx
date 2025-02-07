@@ -1,12 +1,12 @@
-import { describe, it, expect } from "vitest";
-import { screen, render } from "@testing-library/react";
+import {describe, it, expect} from "vitest";
+import {screen, render} from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
-import { Button } from "../../../src/components/ui/button";
+import {Button} from "@/components/ui/button";
 
 describe("components/ui/button", () => {
 	it("renders a button", () => {
 		render(
-			<Button />
+			<Button/>
 		);
 
 		const button = screen.getByRole("button");
@@ -38,7 +38,7 @@ describe("components/ui/button", () => {
 	describe("variants/variant", () => {
 		it.each`
 			variant      | className
-			${"default"} | ${"text-white bg-button hover:outline-dashed hover:outline-accent hover:outline-offset-2"} 
+			${"default"} | ${"text-white bg-primary-button hover:outline-dashed hover:outline-accent hover:outline-offset-2"} 
 		`("renders a button of $variant variant", ({
 			variant,
 			className
@@ -62,9 +62,9 @@ describe("components/ui/button", () => {
 			${"sm"}      | ${"h-9 rounded-md px-3"} 
 			${"icon"}    | ${"h-10 w-10"} 
 		`("renders a button of $size size", ({
-			size,
-			className
-		}) => {
+		  size,
+		  className
+	  }) => {
 			render(
 				<Button
 					size={size}

@@ -1,50 +1,36 @@
-# React + TypeScript + Vite
+# pandevhome
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Home page for [Pandesal.dev](https://pandesal.dev).
 
-Currently, two official plugins are available:
+Built with [TypeScript](https://typescriptlang.org) and [Next](https://nextjs.org).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Requirements
 
-## Expanding the ESLint configuration
+- nvm
+  - [Windows](https://github.com/coreybutler/nvm-windows?tab=readme-ov-file)
+  - [macOS/*NIX](https://github.com/nvm-sh/nvm)
+- pnpm
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Setup
 
-- Configure the top-level `parserOptions` property like this:
+> Note: Navigate to the project directory before running these commands. 
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+1. Select the project's Node version:
+   ```shell
+   nvm
+   ```
+2. Install the project's dependencies using pnpm:
+   ```shell
+   pnpm i
+   ```
+3. Run the project in development mode:
+   ```shell
+   pnpm dev
+   ```
+   Go to `http://localhost:3000` to view the project.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Contributing
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- We follow [Conventional Commits](https://conventionalcommits.org) when naming our commits. It is highly recommended to
+  observe this convention for compability with the rest of the project's tools.
+- Keep commits short and contained. This helps introducing changes easier by avoiding conflicts.

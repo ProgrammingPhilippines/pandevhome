@@ -1,6 +1,11 @@
-/** @type {import('tailwindcss').Config} */
+import type {Config} from "tailwindcss";
+
 export default {
-	content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+	content: [
+		"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+	],
 	theme: {
 		container: {
 			center: true,
@@ -17,9 +22,9 @@ export default {
 				primary: "hsl(var(--primary))",
 				secondary: "hsl(var(--secondary))",
 				accent: "hsl(var(--accent))",
-				primaryButton: "hsl(var(--primary-button-color))",
+				'primary-button': "hsl(var(--primary-button-color))",
 			},
 		},
 	},
 	plugins: [],
-};
+} satisfies Config;
