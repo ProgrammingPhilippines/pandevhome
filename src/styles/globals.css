@@ -1,35 +1,50 @@
 @import url("https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&display=swap");
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
-	--font-grotesque: "Darker Grotesque";
-	--min-height: 100dvh;
+  --font-grotesque: "Darker Grotesque";
+  --min-height: 100dvh;
 
-	/* colors */
-	--background: 235.71, 22.58%, 12.16%; /* #181926 */
-	--foreground: 234.89, 72.31%, 87.25%; /* #C7CBF6 */
-	--primary: 105.22, 48.25%, 71.96%; /* #A6DA95 */
-	--secondary: 40.25, 69.91%, 77.84%; /* #EED49F */
-	--accent: 266.51, 82.69%, 79.61%; /* #C6A0F6 */
-	--primary-button-color: 264.74, 38.96%, 51.18%; /* #7A52B3 */
-	/* add more colors here if needed so */
+  /* colors */
+  --background: hsl(235.71, 22.58%, 12.16%);
+  /* #181926 */
+  --foreground: hsl(234.89, 72.31%, 87.25%);
+  /* #C7CBF6 */
+  --primary: hsl(105.22, 48.25%, 71.96%);
+  /* #A6DA95 */
+  --secondary: hsl(40.25, 69.91%, 77.84%);
+  /* #EED49F */
+  --accent: hsl(266.51, 82.69%, 79.61%);
+  /* #C6A0F6 */
+  --primary-button-color: hsl(264.74, 38.96%, 51.18%);
+  /* #7A52B3 */
 
-	font-family: var(--font-grotesque), sans-serif;
-	min-height: var(--min-height);
+  font-family: var(--font-grotesque), sans-serif;
+  min-height: var(--min-height);
+
+  /* dynamic size */
+  --h1: 54px/60px;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-primary-btn: var(--primary-button-color);
+  --font-display: var(--font-grotesque);
 }
 
 @media (prefers-color-scheme: dark) {
-	:root {
-		--background: #0a0a0a;
-		--foreground: #ededed;
-	}
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
 }
 
-body {
-	color: var(--foreground);
-	background: var(--background);
-	font-family: Arial, Helvetica, sans-serif;
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
 }
