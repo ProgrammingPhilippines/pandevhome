@@ -1,78 +1,51 @@
-import {describe, it, expect} from "vitest";
-import {screen, render} from "@testing-library/react";
+import { describe, it, expect } from "vitest";
+import { screen, render } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
-import {Button} from "@/components/ui/button";
+import { Button } from "@/components/ui/buttons/Button";
 
-describe("components/ui/button", () => {
-	it("renders a button", () => {
-		render(
-			<Button/>
-		);
+describe("Button", () => {
+  it("renders an anchor element", () => {
+    render(<Button href="#">Test Button</Button>);
+    const button = screen.getByRole("link");
+    expect(button).toBeInTheDocument();
+  });
 
-		const button = screen.getByRole("button");
-		expect(button).toBeInTheDocument();
-	});
+  it("renders children content", () => {
+    render(<Button href="#">Test Content</Button>);
+    expect(screen.getByText("Test Content")).toBeInTheDocument();
+  });
 
-	it("renders a text content", () => {
-		render(
-			<Button>
-				test
-			</Button>
-		);
+  it("applies discord variant styles", () => {
+    render(<Button href="#" variant="discord">Test Button</Button>);
+    const button = screen.getByRole("link");
+    expect(button).toHaveClass("primary-btn-rounded");
+  });
 
-		const button = screen.getByRole("button");
-		expect(button).toHaveTextContent("test");
-	});
+  it("renders icon when provided", () => {
+    render(
+      <Button 
+        href="#" 
+        icon="/test-icon.svg" 
+        iconAlt="Test Icon"
+      >
+        Test Button
+      </Button>
+    );
+    const icon = screen.getByAltText("Test Icon");
+    expect(icon).toBeInTheDocument();
+  });
 
-	it("renders a class name", () => {
-		render(
-			<Button
-				className="test class"
-			/>
-		);
-
-		const button = screen.getByRole("button");
-		expect(button).toHaveClass("class test");
-	});
-
-	describe("variants/variant", () => {
-		it.each`
-			variant      | className
-			${"default"} | ${"text-white bg-primary-button hover:outline-dashed hover:outline-accent hover:outline-offset-2"} 
-		`("renders a button of $variant variant", ({
-			variant,
-			className
-		}) => {
-			render(
-				<Button
-					variant={variant}
-				/>
-			);
-
-			const button = screen.getByRole("button");
-			expect(button).toHaveClass(className);
-		});
-	});
-
-	describe("variants/size", () => {
-		it.each`
-			size         | className
-			${"default"} | ${"h-10 px-4 py-2"} 
-			${"lg"}      | ${"h-11 rounded-md px-8"} 
-			${"sm"}      | ${"h-9 rounded-md px-3"} 
-			${"icon"}    | ${"h-10 w-10"} 
-		`("renders a button of $size size", ({
-		  size,
-		  className
-	  }) => {
-			render(
-				<Button
-					size={size}
-				/>
-			);
-
-			const button = screen.getByRole("button");
-			expect(button).toHaveClass(className);
-		});
-	});
+  it("passes through anchor props", () => {
+    render(
+      <Button 
+        href="https://example.com" 
+        target="_blank"
+      >
+        Test Button
+      </Button>
+    );
+    const button = screen.getByRole("link");
+    expect(button).toHaveAttribute("href", "https://example.com");
+    expect(button).toHaveAttribute("target", "_blank");
+  });
 });

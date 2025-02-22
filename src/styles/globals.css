@@ -1,30 +1,29 @@
-@import url("https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&family=Dela+Gothic+One&display=swap");
 
 @import "tailwindcss";
 
 :root {
   --font-grotesque: "Darker Grotesque";
+  --font-dela: "Dela Gothic One";
   --min-height: 100dvh;
 
   /* colors */
-  --background: hsl(235.71, 22.58%, 12.16%);
-  /* #181926 */
-  --foreground: hsl(234.89, 72.31%, 87.25%);
-  /* #C7CBF6 */
-  --primary: hsl(105.22, 48.25%, 71.96%);
-  /* #A6DA95 */
-  --secondary: hsl(40.25, 69.91%, 77.84%);
-  /* #EED49F */
-  --accent: hsl(266.51, 82.69%, 79.61%);
-  /* #C6A0F6 */
-  --primary-button-color: hsl(264.74, 38.96%, 51.18%);
-  /* #7A52B3 */
+  --background: hsl(235.71, 22.58%, 12.16%); /* #181926 */
+  --foreground: hsl(234.89, 72.31%, 87.25%); /* #C7CBF6 */
+  --primary: hsl(105.22, 48.25%, 71.96%); /* #A6DA95 */
+  --secondary: hsl(40.25, 69.91%, 77.84%); /* #EED49F */
+  --accent: hsl(266.51, 82.69%, 79.61%); /* #C6A0F6 */
+
+  --hero-glow-opacity: 0.14;
+  --hero-glow: hsl(36 83% 65% / var(--hero-glow-opacity));
+  --blur-effect: 100px;
 
   font-family: var(--font-grotesque), sans-serif;
   min-height: var(--min-height);
 
-  /* dynamic size */
-  --h1: 54px/60px;
+  --primary-btn-text-size: 1.3rem;
+  --primary-btn-border-radius: 2.75rem;
+
 }
 
 @theme {
@@ -33,8 +32,14 @@
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
-  --color-primary-btn: var(--primary-button-color);
-  --font-display: var(--font-grotesque);
+  --color-glow: var(--hero-glow);
+  --ease-in-expo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1, 0.035);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --font-dela: var(--font-dela);
+  --text-h1: clamp(2rem, 7vw, 75px);
+  --text-p-sm: clamp(0.9rem, 3.5vw, 1.5rem);
+  --border-accent: 'var(--accent)';
 }
 
 @media (prefers-color-scheme: dark) {
@@ -47,4 +52,47 @@
 @utility container {
   margin-inline: auto;
   padding-inline: 2rem;
+
 }
+
+
+.hero-glow {
+  @apply absolute w-72 h-72 blur-(--blur-effect) opacity-(--hero-glow-opacity) -z-20;
+}
+
+.primary-btn-text {
+  @apply text-(length:--primary-btn-text-size);
+}
+.primary-btn-rounded {
+  @apply rounded-(--primary-btn-border-radius)
+}
+
+.side-nav {
+  @apply min-h-screen w-full fixed top-0 left-0 flex flex-col transform transition-all duration-300 bg-background;
+  transition-timing-function: var(--ease-out-expo);
+}
+
+.side-nav-open {
+  @apply translate-x-0 opacity-100;
+}
+
+.side-nav-closed {
+  @apply translate-x-full opacity-0;
+}
+
+.menu-btn, .exit-btn{
+  @apply border-none bg-transparent p-0 cursor-pointer;
+}
+
+.stat-container {
+  @apply grid grid-cols-2 justify-items-end gap-4;
+}
+
+.stat-number {
+  @apply text-4xl font-semibold tracking-widest;
+}
+
+.stat-label {
+  @apply font-semibold justify-self-start;
+}
+
