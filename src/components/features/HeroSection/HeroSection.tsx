@@ -16,15 +16,14 @@ export default function HeroSection() {
 			<Image src={ellipse} className="-right-1/2 top-[40em] hero-glow" alt="Glow effect" priority />
 			<section className="container">
 				<header className="flex justify-between z-50">
-					{!open && (
-						<Link href="/" aria-label="Go to homepage">
-							<Image src={logo} alt="The pandev logo" id="logo" data-testid="logo" className="w-28" />
-						</Link>
-					)}
+					<Link href="/" aria-label="Go to homepage">
+						<Image src={logo} alt="The pandev logo" id="logo" data-testid="logo" className="w-28" />
+					</Link>
 					<MenuToggle open={open} setOpen={openMenu} />
-					<SideMenu open={open} setOpen={openMenu} />
+					
 				</header>
-				{!open && <HeroContent role="main" data-testid="hero-content" />}
+				<HeroContent role="main" data-testid="hero-content" />
+				<SideMenu open={open} setOpen={openMenu} />
 			</section>
 		</HeroContainer>
 	);

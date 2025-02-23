@@ -14,7 +14,7 @@ export default function MenuToggle({ open, setOpen }: MenuToggleProps) {
       aria-label="Toggle menu"
       data-testid="menu-toggle"
     >
-      {!open && <Image src={menu} alt="Hamburger menu icon" id="menu-btn" className="w-8" priority />}
+       <Image src={menu} alt="Hamburger menu icon" id="menu-btn" className="w-8" priority />
     </button>
   );
 }
