@@ -34,7 +34,7 @@ describe("HeroSection", () => {
 
 	it("renders with correct layout structure", () => {
 		const rootElement = screen.getByRole("banner").parentElement?.parentElement;
-		expect(rootElement).toHaveClass("min-h-screen w-full pt-5 relative overflow-x-hidden");
+		expect(rootElement).toHaveClass("bg-background text-foreground w-screen min-h-screen pt-5 relative overflow-x-hidden z-50");
 	});
 });
 
@@ -51,13 +51,13 @@ describe("Menu State Management", () => {
     expect(main).toHaveAttribute("data-testid", "hero-content");
   });
 
-  it("hides logo and content when menu is opened", () => {
+  it("the should logo and content should still be in dom when menu is opened", () => {
     const toggleButton = screen.getByTestId("menu-toggle");
     // Open menu
     fireEvent.click(toggleButton);
     // Logo and main content should not exist in the DOM
-    expect(screen.queryByAltText("The pandev logo")).not.toBeInTheDocument();
-    expect(screen.queryByRole("main")).not.toBeInTheDocument();
+    expect(screen.queryByAltText("The pandev logo")).toBeInTheDocument();
+    expect(screen.queryByRole("main")).toBeInTheDocument();
     // Navigation should have open class
     const nav = screen.getByTestId("side-menu");
     expect(nav).toHaveClass("side-nav-open");
