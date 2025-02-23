@@ -1,38 +1,30 @@
 import discord2 from "@/assets/discord-icon-white.svg";
-import { Button } from "../../ui/buttons/Button";
+import { LinkButton } from "../../ui/buttons/LinkButton";
 import { StatItem } from "../../ui/data-display/StatItem";
-
+import { nanoid } from "nanoid";
+import { delaGothic } from "@/components/ui/fonts";
 const COMMUNITY_STATS = [
 	{
+		id: nanoid(),
 		number: "1k+",
-		label: (
-			<>
-				<span className="block">Active</span> Members
-			</>
-		),
+		label: "Active | Members",
 	},
 	{
+		id: nanoid(),
 		number: "12k+",
-		label: (
-			<>
-				<span className="block">Meetups &</span> Events
-			</>
-		),
+		label: "Meetups & | Events",
 	},
 	{
+		id: nanoid(),
 		number: "10k+",
-		label: (
-			<>
-				<span className="block">Raffles & </span> Giveaways
-			</>
-		),
+		label: "Raffles & | Giveaways",
 	},
 ] as const;
 
 export default function HeroContent({ ...props }) {
 	return (
 		<main {...props} className="py-11">
-			<h1 className="text-h1 leading-tight capitalize text-center font-dela max-w-3xl m-auto">
+			<h1 className={`text-h1 leading-tight capitalize text-center ${delaGothic.className} max-w-3xl m-auto`}>
 				a comm<span className="text-accent">unity</span> of <span className="text-primary">filipino</span> software
 				developers
 			</h1>
@@ -40,7 +32,7 @@ export default function HeroContent({ ...props }) {
 				Pandev is where the fun tech talks take place
 			</p>
 			<div className="grid place-content-center">
-				<Button
+				<LinkButton
 					href={process.env.NEXT_PUBLIC_DISCORD_URL}
 					target="_blank"
 					variant="discord"
@@ -48,13 +40,13 @@ export default function HeroContent({ ...props }) {
 					iconAlt="Discord Icon White"
 				>
 					Join Discord
-				</Button>
+				</LinkButton>
 			</div>
-			<div className="border-1 border-accent rounded-3xl grid py-5 px-6 mt-4" data-testid="stats">
+			<div className="border-1 border-accent rounded-3xl grid py-5 px-6 mt-4 text-white" data-testid="stats">
 				{COMMUNITY_STATS.map((stat, index) => (
-					<div key={stat.number}>
+					<div key={stat.id}>
 						{index > 0 && <hr className="bg-accent w-full my-4 border-white/20" />}
-						<StatItem number={stat.number} label={stat.label} />
+						<StatItem {...stat} />
 					</div>
 				))}
 			</div>

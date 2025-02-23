@@ -1,10 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&family=Dela+Gothic+One&display=swap");
-
 @import "tailwindcss";
 
 :root {
-  --font-grotesque: "Darker Grotesque";
-  --font-dela: "Dela Gothic One";
+  /* --font-grotesque: var(--font-darker-grotesque);
+  --font-dela: var(--font-dela-gothic); */
   --min-height: 100dvh;
 
   /* colors */
@@ -14,11 +12,11 @@
   --secondary: hsl(40.25, 69.91%, 77.84%); /* #EED49F */
   --accent: hsl(266.51, 82.69%, 79.61%); /* #C6A0F6 */
 
-  --hero-glow-opacity: 0.14;
+  --hero-glow-opacity: 0.09;
   --hero-glow: hsl(36 83% 65% / var(--hero-glow-opacity));
   --blur-effect: 100px;
 
-  font-family: var(--font-grotesque), sans-serif;
+  /* font-family: var(--font-grotesque), sans-serif; */
   min-height: var(--min-height);
 
   --primary-btn-text-size: 1.3rem;
@@ -27,8 +25,9 @@
 }
 
 @theme {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  
+  --color-background: hsl(235.71, 22.58%, 12.16%); /* Bruh, the variable at :root won't work here (it's interpreted as black); I'll just explicitly put it here. */;
+  --color-foreground: hsl(234.89, 72.31%, 87.25%); /* Bruh, the variable at :root won't work here (it's interpreted as white); I'll just explicitly put it here. */;
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
@@ -36,7 +35,7 @@
   --ease-in-expo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
   --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1, 0.035);
   --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
-  --font-dela: var(--font-dela);
+  /* --font-dela: var(--font-dela); */
   --text-h1: clamp(2rem, 7vw, 75px);
   --text-p-sm: clamp(0.9rem, 3.5vw, 1.5rem);
   --border-accent: 'var(--accent)';
@@ -57,7 +56,7 @@
 
 
 .hero-glow {
-  @apply absolute w-72 h-72 blur-(--blur-effect) opacity-(--hero-glow-opacity) -z-20;
+  @apply absolute w-72 h-72 blur-(--blur-effect) opacity-(--hero-glow-opacity);
 }
 
 .primary-btn-text {
@@ -93,6 +92,6 @@
 }
 
 .stat-label {
-  @apply font-semibold justify-self-start;
+  @apply font-semibold justify-self-start text-[1.25rem] leading-5;
 }
 

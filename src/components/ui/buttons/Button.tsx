@@ -1,62 +1,38 @@
-import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/util/cn";
-import Image from "next/image";
-import { useRef } from "react"; 
-const buttonVariants = cva(
-	// Base styles that apply to all variants
-	"relative inline-flex items-center justify-center gap-5 transition-all duration-300",
+import * as React from "react";
+import {cva, type VariantProps} from "class-variance-authority";
+import {cn} from "@/util/cn";
+
+export const buttonVariants = cva(
+	"inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible-ring-2 focus-visible:ring-offset-2 disabled:pointer-event-none disabled:opacity-50 disabled:cursor-not-allowed",
 	{
 		variants: {
 			variant: {
-				discord: cn(
-					// Main styles
-					"px-6 py-4 text-white primary-btn-rounded font-bold my-8 w-52 primary-btn-text",
-					"bg-[linear-gradient(180deg,_rgba(122,82,179,1)_60%,_rgba(82,56,120,1)_100%)]",
-					// Hover styles
-					"hover:bg-[linear-gradient(180deg,_rgba(90,61,132,1)_60%,_rgba(57,38,84,1)_100%)]",
-					// Active/Focus styles
-					"active:-translate-y-1",
-					"outline-2 outline-white/40",
-					// Pseudo element styles
-					"active:before:content-['']",
-					"active:before:absolute",
-					"active:before:top-[1em]",
-					"active:before:left-[0]",
-					"active:before:w-full",
-					"active:before:h-full",
-					"active:before:border-2",
-					"active:before:border-dashed",
-					"active:before:border-white/40",
-					"active:before:rounded-(--primary-btn-border-radius)",
-					"active:before:-z-10",
-				),
-				// Add more variants as needed
+				default:
+					"text-white bg-primary-button hover:outline hover:outline-dashed hover:outline-accent hover:outline-offset-2",
+				// add button variants in here as per Figma design
+			},
+			// not the actual sizes yet, feel free to modify these
+			size: {
+				default: "h-10 px-4 py-2",
+				lg: "h-11 rounded-md px-8",
+				sm: "h-9 rounded-md px-3",
+				icon: "h-10 w-10",
 			},
 		},
 		defaultVariants: {
-			variant: "discord",
+			variant: "default",
+			size: "default",
 		},
 	},
 );
 
-interface ButtonProps extends React.AnchorHTMLAttributes<HTMLAnchorElement>, VariantProps<typeof buttonVariants> {
-	icon?: string;
-	iconAlt?: string;
-}
+type ButtonBaseComponent = HTMLElementTagNameMap['button'];
 
-export const Button = ({ className, variant, icon, iconAlt, children, ...props }: ButtonProps) => {
-	const ref = useRef<HTMLAnchorElement>(null); // Create a ref
+type ButtonProps = React.ButtonHTMLAttributes<ButtonBaseComponent> & VariantProps<typeof buttonVariants>;
 
-	return (
-		<a
-			className={cn(buttonVariants({ variant, className }))}
-			ref={ref} // Assign the ref to the element
-			{...props}
-		>
-			{icon && <Image src={icon} alt={iconAlt ?? ""} className="w-9 h-9" />}
-			{children}
-		</a>
-	);
-};
-
+export const Button = React.forwardRef<ButtonBaseComponent, ButtonProps>(
+	({className, variant, size, ...props}, ref) => {
+		return <button className={cn(buttonVariants({variant, size, className}))} ref={ref} {...props} />;
+	},
+);
 Button.displayName = "Button";

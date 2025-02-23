@@ -1,7 +1,7 @@
 # Environment
 .env
 .env.*
-!.env.local
+!.env.example
 
 # Logs
 logs
@@ -58,3 +58,5 @@ coverage/
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+pnpm-lock.yaml

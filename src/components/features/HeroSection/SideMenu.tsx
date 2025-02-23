@@ -65,13 +65,17 @@ const SOCIAL_LINKS: SocialLink[] = [
 
 export default function SideMenu({ open, setOpen }: SideMenuProps) {
 	return (
-		<nav className={cn("side-nav", open ? "side-nav-open" : "side-nav-closed")} data-testid="side-menu" role="navigation">
+		<nav
+			className={cn("side-nav text-white", open ? "side-nav-open" : "side-nav-closed")}
+			data-testid="side-menu"
+			role="navigation"
+		>
 			<ul className="**:cursor-pointer [&>li:not(:first-child)]:hover:bg-secondary [&>li:not(:first-child)]:hover:text-background text-2xl/loose font-medium [&>li:not(:first-child)]:px-6">
 				<li className="px-6 py-10">
 					<ExitButton setOpen={setOpen} />
 				</li>
 				{MENU_ITEMS.map((item) => (
-					<MenuItem key={item.label} label={item.label} href={item.href} />
+					<MenuItem key={item.label} {...item} />
 				))}
 			</ul>
 			<div className="mt-auto px-6 pt-10 pb-16">

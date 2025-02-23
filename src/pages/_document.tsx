@@ -1,10 +1,10 @@
 import { Html, Head, Main, NextScript } from "next/document";
-
+import { darkerGrotesque } from "@/components/ui/fonts";
 export default function Document() {
 	return (
-		<Html lang="en">
+		<Html lang="en" className={`${darkerGrotesque.className}`}>
 			<Head />
-			<body className="container bg-background text-foreground antialiased box-border">
+			<body>
 				<Main />
 				<NextScript />
 			</body>
