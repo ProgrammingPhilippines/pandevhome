@@ -12,7 +12,7 @@ interface MenuItemProps {
 export function MenuItem({ label, href, className }: MenuItemProps) {
   return (
     <li className={cn("block group", className)}>
-      <Link href={href} className="flex justify-between items-center">
+      <Link href={href} className="flex justify-between items-center font-medium text-3xl leading-14">
         {label}
         <Image 
           src={forwardArrow} 

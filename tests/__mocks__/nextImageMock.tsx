@@ -1,17 +1,17 @@
-import * as React from 'react'
+import * as React from "react";
 
-const NextImageMock = React.forwardRef(({
-  src,
-  alt,
-  className,
-}: {
-  src?: string
-  alt?: string
-  className?: string
-}) => {
-  return <img src={src} alt={alt} className={className} />
-})
+interface imageProps {
+	src?: string;
+	alt?: string;
+	className?: string;
+	"data-testid"?: string;
+}
 
-NextImageMock.displayName = 'NextImageMock'
+const NextImageMock = React.forwardRef<HTMLImageElement, imageProps>((props, ref) => {
+	const { src, alt, className } = props;
+	return <img ref={ref} src={src} alt={alt} className={className} data-testid="logo" />;
+});
 
-export default NextImageMock
+NextImageMock.displayName = "NextImageMock";
+
+export default NextImageMock;

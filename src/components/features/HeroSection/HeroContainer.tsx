@@ -4,5 +4,6 @@ interface ContainerProps {
 	className?: string;
 }
 export function HeroContainer({ children, className }: ContainerProps) {
-	return <div className={cn("bg-background text-foreground w-screen min-h-screen pt-5 relative overflow-x-hidden z-50", className)}>{children}</div>;
+	return <div className={cn("bg-background text-foreground w-screen min-h-screen relative overflow-x-hidden", className)} data-testid="hero-container">{children}</div>;
+
 }

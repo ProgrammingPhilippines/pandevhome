@@ -1,13 +1,13 @@
 import HeroSection from "@/components/features/HeroSection/HeroSection";
 import { Layout } from "@/components/layout.tsx/Layout";
+import NavBar from "@/components/ui/navigation/NavBar";
 
 export default function Home() {
 	return (
 		<>
-		<HeroSection />
-      <Layout>
-        {/* Other sections here */}
-      </Layout>
+			<NavBar />
+			<HeroSection />
+			<Layout>{/* Other sections here */}</Layout>
 		</>
 	);
 }

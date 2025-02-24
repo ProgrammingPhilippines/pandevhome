@@ -10,7 +10,7 @@ const buttonVariants = cva(
 			variant: {
 				discord: cn(
 					// Main styles
-					"px-6 py-4 text-white primary-btn-rounded font-bold my-8 w-52 primary-btn-text",
+					"px-6 py-3 md:py-4 text-white primary-btn-rounded font-bold my-8 w-52 primary-btn-text",
 					"bg-[linear-gradient(180deg,_rgba(122,82,179,1)_60%,_rgba(82,56,120,1)_100%)]",
 					// Hover styles
 					"hover:bg-[linear-gradient(180deg,_rgba(90,61,132,1)_60%,_rgba(57,38,84,1)_100%)]",

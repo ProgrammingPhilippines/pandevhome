@@ -19,3 +19,4 @@ vi.mock('next/font/google', () => ({
     Darker_Grotesque: () => createMockFont(),
     Dela_Gothic_One: () => createMockFont()
   }));
+
