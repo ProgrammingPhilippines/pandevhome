@@ -11,7 +11,7 @@ interface MenuItem {
 }
 
 interface SocialLink {
-	id?: string; 
+	id: string; 
 	icon: string;
 	href: string;
 	alt: string;
@@ -78,4 +78,5 @@ const COMMUNITY_STATS = [
 		label: "Raffles & | Giveaways",
 	},
 ] as const;
-export {MENU_ITEMS, SOCIAL_LINKS, COMMUNITY_STATS};
+export { MENU_ITEMS, SOCIAL_LINKS, COMMUNITY_STATS };
+export type { SocialLink };

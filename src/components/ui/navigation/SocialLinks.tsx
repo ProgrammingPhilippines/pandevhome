@@ -1,14 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-
-interface SocialLinkProps {
-	id?: string;
-	href: string;
-	icon: string;
-	alt: string;
-	width: number;
-	height: number;
-}
+import { SocialLink as SocialLinkProps } from "@/components/features/HeroSection/constants";
 
 export function SocialLinks({ links }: { links: SocialLinkProps[] }) {
 	const linkComponents = links.map((link) => (

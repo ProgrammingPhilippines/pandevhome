@@ -9,16 +9,23 @@ import purpStar from "@/assets/purp-start.svg";
 import yellowStar from "@/assets/yellow-star.svg";
 import greenPaperPlane from "@/assets/green-paperplane.svg";
 import { cn } from "@/util/cn";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 export default function HeroContent({ ...props }) {
 	const [planeAnimation, setPlaneAnimation] = useState("lg:after:animate-plane-fly");
+	const [animationPhase, setAnimationPhase] = useState(0);
 
-	function handleAnimationEnd() {
-		setPlaneAnimation("lg:after:animate-plane-respawn")
-		setTimeout(() => {
+	useEffect(() => {
+		if (animationPhase === 1) {
+		  setPlaneAnimation("lg:after:animate-plane-respawn");
+		  
+		  const timer = setTimeout(() => {
 			setPlaneAnimation("lg:after:animate-plane-float");
 		  }, 1000);
-	}
+		  
+		  return () => clearTimeout(timer); 
+		}
+	  }, [animationPhase]);
+
 	const communityStatComponents = COMMUNITY_STATS.map((stat, index) => (
 		<div
 			key={stat.id}
@@ -52,15 +59,14 @@ export default function HeroContent({ ...props }) {
 				developers
 			</h1>
 			<p
-				onAnimationEnd={handleAnimationEnd}
+				onAnimationEnd={() => setAnimationPhase(1)}
 				style={{
 					["--bg-image-after" as string]: `url(${greenPaperPlane.src})`,
 				}}
 				className={cn(
 					"text-center font-semibold mt-6 text-p-sm relative",
 					"lg:after:absolute lg:after:bg-[image:var(--bg-image-after)] lg:after:bg-no-repeat lg:after:z-10 lg:after:h-20 lg:after:w-full lg:after:left-8 xl:after:left-36 2xl:after:left-64 lg:after:-bottom-14",
-					planeAnimation
-
+					planeAnimation,
 				)}
 			>
 				Pandev is where the fun tech talks take place
