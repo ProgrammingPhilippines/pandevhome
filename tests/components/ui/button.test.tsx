@@ -1,7 +1,9 @@
-import {describe, it, expect} from "vitest";
+import {describe, it, expect, vi} from "vitest";
 import {screen, render} from "@testing-library/react";
+import {userEvent} from "@testing-library/user-event";
+import {Button} from "@/components/ui/button";
 import "@testing-library/jest-dom/vitest";
-import {Button} from "@/components/ui/buttons/Button";
+
 
 describe("components/ui/button", () => {
 	it("renders a button", () => {
@@ -74,5 +76,18 @@ describe("components/ui/button", () => {
 			const button = screen.getByRole("button");
 			expect(button).toHaveClass(className);
 		});
+	});
+
+	it('handles click events', async () => {
+		const handleClick = vi.fn();
+		render(
+			<Button
+				onClick={handleClick}
+			/>
+		);
+
+		const button = screen.getByRole("button");
+		await userEvent.click(button);
+		expect(handleClick).toBeCalled();
 	});
 });
