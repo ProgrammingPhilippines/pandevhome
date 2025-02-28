@@ -2,26 +2,27 @@ import React from "react";
 import "@testing-library/jest-dom";
 import { describe, it, expect } from "vitest";
 import { screen, render } from "@testing-library/react";
-import { Button } from "@/components/ui/button";
+import { LinkButton } from "@/components/ui/link-button";
 
-describe("Button", () => {
-	it("renders a button with a default props", () => {
-		render(<Button>Click Me</Button>);
+describe("LinkButton", () => {
+	it("renders a link button with default props", () => {
+		render(<LinkButton href="/">Click me</LinkButton>);
 
-		const button = screen.getByRole("button", { name: /click me/i });
-		expect(button).toBeInTheDocument();
-		expect(button).toHaveClass("text-white bg-primary-button");
+		const link = screen.getByRole("link", { name: /click me/i });
+		expect(link).toBeInTheDocument();
+		expect(link).toHaveAttribute("href", "/");
 	});
 
-	it("renders as child when asChild prop is true", () => {
+	it("applies a custom className", () => {
 		render(
-			<Button asChild>
-				<a href="/">Link Button</a>
-			</Button>,
+			<LinkButton href="/" className="custom-class">
+				Custom Class
+			</LinkButton>,
 		);
 
-		const link = screen.getByRole("link", { name: /link button/i });
+		const link = screen.getByRole("link", { name: /custom class/i });
 		expect(link).toBeInTheDocument();
-		expect(link).toHaveClass("inline-flex items-center justify-center");
+		expect(link).toHaveAttribute("href", "/");
+		expect(link).toHaveClass("custom-class");
 	});
 });
