@@ -6,7 +6,7 @@ import { BenefitsContent } from "./BenefitsContent";
 export default function BenefitsSection() {
 	return (
 		<section>
-			<header className="my-24">
+			<header className="py-24">
 				<h2
 					style={{
 						["--bg-image-before" as string]: `url(${yellowStar.src})`,
