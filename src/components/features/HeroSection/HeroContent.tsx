@@ -1,7 +1,7 @@
 import discord2 from "@/assets/discord-icon-white.svg";
 import { LinkButton } from "../../ui/buttons/LinkButton";
 import { StatItem } from "../../ui/data-display/StatItem";
-import { delaGothic } from "@/components/ui/fonts";
+import { delaGothic } from "@/util/fonts";
 import { COMMUNITY_STATS } from "./constants";
 import heroImage from "@/assets/highlight.png";
 import Image from "next/image";
@@ -16,15 +16,15 @@ export default function HeroContent({ ...props }) {
 
 	useEffect(() => {
 		if (animationPhase === 1) {
-		  setPlaneAnimation("lg:after:animate-plane-respawn");
-		  
-		  const timer = setTimeout(() => {
-			setPlaneAnimation("lg:after:animate-plane-float");
-		  }, 1000);
-		  
-		  return () => clearTimeout(timer); 
+			setPlaneAnimation("lg:after:animate-plane-respawn");
+
+			const timer = setTimeout(() => {
+				setPlaneAnimation("lg:after:animate-plane-float");
+			}, 1000);
+
+			return () => clearTimeout(timer);
 		}
-	  }, [animationPhase]);
+	}, [animationPhase]);
 
 	const communityStatComponents = COMMUNITY_STATS.map((stat, index) => (
 		<div
@@ -71,9 +71,9 @@ export default function HeroContent({ ...props }) {
 			>
 				Pandev is where the fun tech talks take place
 			</p>
-			<div className="grid place-content-center">
+			<div className="flex items-center justify-center mt-6 mb-12">
 				<LinkButton
-					href={process.env.NEXT_PUBLIC_DISCORD_URL}
+					href={process.env.NEXT_PUBLIC_DISCORD_URL ?? "/"}
 					target="_blank"
 					variant="discord"
 					icon={discord2}
