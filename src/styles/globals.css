@@ -9,6 +9,8 @@
   --primary: hsl(105.22, 48.25%, 71.96%); /* #A6DA95 */
   --secondary: hsl(40.25, 69.91%, 77.84%); /* #EED49F */
   --accent: hsl(266.51, 82.69%, 79.61%); /* #C6A0F6 */
+	--lightblue: hsl(199, 66%, 69%); /* #7DC4E4 */
+	--pandesal: hsl(21, 86%, 73%); /* #F5A97F */
 
   --hero-glow-opacity: 0.07;
   --hero-glow: hsl(36 83% 65% / var(--hero-glow-opacity));
@@ -28,12 +30,16 @@
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
+  --color-lightblue: var(--lightblue);
+  --color-pandesal: var(--pandesal);
   --color-glow: var(--hero-glow);
   --ease-in-expo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
   --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1, 0.035);
   --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
   /* --font-dela: var(--font-dela); */
   --text-h1: clamp(2.15rem, 7vw, 75px);
+  --text-h2: clamp(1.375rem, 5vw, 48px);
+  --text-h3: clamp(1rem, 3.5vw, 36px);
   --text-p-sm: clamp(0.9rem, 3.5vw, 1.5rem);
   --border-accent: 'var(--accent)';
 
